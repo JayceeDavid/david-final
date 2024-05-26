@@ -6,8 +6,8 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Auth;
-// use App\Http\Resources\PostResource;
 
+use function PHPUnit\Framework\is_null;
 
 class PostController extends Controller
 {
@@ -81,13 +81,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $this->authorize('view', $post);
-        $post->delete();
+        $post->delete($post->id);
         return redirect()->route('post.index')->with('message', 'Post Successfully Deleted!');
     }
     
     public function postIndex() {
         $posts = Post::where('status', 1)->get();
-        return view('pages.index', ['posts' => $posts]);
+        $ico = true;
+        return view('pages.index', ['posts' => $posts, 'ico' => $ico]);
     }
 }

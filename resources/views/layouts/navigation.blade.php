@@ -1,3 +1,4 @@
+@auth
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
@@ -12,6 +13,9 @@
             <ul id="resources-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('post.index')}}"> <i class="bi bi-circle"></i><span>Posts</span> </a>
+                </li>
+                <li>
+                    <a href="{{ route('post.postIndex')}}"> <i class="bi bi-circle"></i><span>Post Page</span> </a>
                 </li>
             </ul>
         </li>
@@ -114,3 +118,4 @@
         </div>
     </div>
 </nav> -->
+@endauth
