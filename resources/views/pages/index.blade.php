@@ -28,10 +28,17 @@
         <!-- Template Main CSS File -->
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     </head>
-    <body class="font-sans antialiased">        
+    <body class="font-sans antialiased">
+        @include('layouts.header')
+        @include('layouts.navigation')
         <!-- Page Content -->
-        <main>
+        @auth
+        <main id="main" class="main">
             <div class="container my-5">
+        @else
+        <main>
+            <div class="container my-5 pt-5">
+        @endauth
                 <div class="row">
                     <div class="col-12 mb-4">
                         <h3>Posts</h3>
@@ -45,11 +52,17 @@
                                 <p><small><b>Author:</b> {{ $post->user->name }}</small></p>
                                 {{ $post->post }}
                                 <p class="border-top mt-4 font-monospace">For your feedback you can email the author on <a href="mailto:{{ $post->user->email }}">{{ $post->user->email }}</a></p>
+                                <b><small>Comments</small></b>
+                                <div class="alert alert-info">
+                                    A simple info alert—check it out!
+                                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+                                </div>
+                                <input type="text" class="form-control" placeholder="Comment..">
                             </div>
                         </div>
                     @endforeach
                 @endisset                
-            </div>            
+            </div>         
         </main>
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

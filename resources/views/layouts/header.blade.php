@@ -4,10 +4,12 @@
             <img src="assets/img/logo.png" alt="" />
             <span class="d-none d-lg-block">Laravel Lesson</span>
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
+        @auth  
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        @endauth
     </div>
     <!-- End Logo -->
-
+    @auth
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
             <li class="nav-item dropdown pe-3">
@@ -52,4 +54,13 @@
         </ul>
     </nav>
     <!-- End Icons Navigation -->
+    @else
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown pe-3">
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                </li>
+            </ul>
+        </nav>
+    @endauth
 </header>
